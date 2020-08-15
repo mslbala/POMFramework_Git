@@ -1,6 +1,7 @@
 package testSuite;
 
 import base.CommonUtil;
+import base.FunctionalUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,9 +18,9 @@ public class TestHomePage extends CommonUtil {
 
     @Test
     public void searchText() {
-        takeScreenshot();
+        takeScreenshot("Home");
         HomePage.searchTextBox(driver).sendKeys("Printed dress");
-        takeScreenshot();
+        takeScreenshot("SearchText");
 
     }
 

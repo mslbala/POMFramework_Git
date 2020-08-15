@@ -31,6 +31,9 @@ public class HomePage {
         element = driver.findElement(By.id("search_query_top"));
         return element;
     }
-
+    public static WebElement searchButton(WebDriver driver) {
+        element = driver.findElement(By.xpath("//button[@name='submit_search']"));
+        return element;
+    }
 
 }

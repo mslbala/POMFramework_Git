@@ -62,9 +62,9 @@ public class WebEventListener implements WebDriverEventListener {
     }
 
     public void onException() {
-        System.out.println("Exception occured during execution");
+        System.out.println("Exception occurred during execution");
         try {
-            takeScreenshot();
+            takeScreenshot("Exception");
         } finally {
             System.out.println("Taken screenshot while exception is caught");
         }

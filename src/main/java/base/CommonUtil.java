@@ -12,6 +12,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -38,9 +41,10 @@ public class CommonUtil {
 
             FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir") + "/src/main/java/config/config.properties");
             properties.load(fileInputStream);
-            String url = properties.getProperty("qa.url");
-            System.out.println("Url is " + url);
-            driver.get(url);
+//            String url = properties.getProperty("qa.url");
+//            System.out.println("Url is " + url);
+
+            driver.get("http://automationpractice.com/index.php");
         } catch (FileNotFoundException e) {
             System.out.println("File not found to read properties file");
         } catch (Exception e) {
@@ -49,18 +53,32 @@ public class CommonUtil {
         new FunctionalUtil(driver);
     }
 
-    public static void takeScreenshot() {
+    public static void takeScreenshot(String name) {
         System.out.println("going to take screenshot");
         File sourceFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        String name = System.getProperty("user.dir") + "/Screenshots/" + System.currentTimeMillis() + ".png";
-        File destinationFile = new File(System.getProperty("user.dir") + "/Screenshots/" + System.currentTimeMillis() + ".png");
-        System.out.println("path of screenshots\t" + name);
+//        String name = System.getProperty("user.dir") + "/Screenshots/" + System.currentTimeMillis() + ".png";
+        File destinationFile = new File("F:\\Selenium_July\\POMFramework_Git\\Screenshots\\"+name+".png");
+//        System.out.println("path of screenshots\t" + name);
         try {
             FileUtils.copyFile(sourceFile, destinationFile);
         } catch (IOException e) {
             System.out.println("There is a problem in taking screenshot and saving it");
         }
     }
+
+    public static void takeScreenshot() {
+        System.out.println("going to take screenshot");
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy h-m-s");
+        Date date = new Date();
+        File sourceFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        File destinationFile = new File("F:\\Selenium_July\\POMFramework_Git\\Screenshots\\"+dateFormat.format(date)+".png");
+        try {
+            FileUtils.copyFile(sourceFile, destinationFile);
+        } catch (IOException e) {
+            System.out.println("There is a problem in taking screenshot and saving it");
+        }
+    }
+
 
     public static void closeSession() {
         driver.quit();
