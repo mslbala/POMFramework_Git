@@ -16,11 +16,11 @@ import java.util.concurrent.TimeUnit;
 
 public class TestHomePage extends CommonUtil {
 
+
     @Test
     public void searchText() {
-        takeScreenshot("Home");
         HomePage.searchTextBox(driver).sendKeys("Printed dress");
-        takeScreenshot("SearchText");
+        takeScreenshot("HomePageSearch");
 
     }
 

@@ -20,13 +20,13 @@ public class TestContactUsPage extends CommonUtil {
     @Before
     public void beforeMethod() {
         System.out.println("I am in before method");
-        takeScreenshot();
+        takeScreenshot("ContactUs");
     }
 
     @Test
     public void fillContactUsPageForm() {
         HomePage.contactUsLink(driver).click();
-        takeScreenshot();
+        takeScreenshot("ContactUsLink");
 
         //to verify the contact us page element is located on the screen
         boolean elementDisplayed = isDisplayedOnScreen(ContactUsPage.subjectHeadingDropDown(driver));
@@ -37,10 +37,9 @@ public class TestContactUsPage extends CommonUtil {
 
         //fill contact us page elements
 //        WebElement headingDropDown = ContactUsPage.subjectHeadingDropDown(driver);
-
         selectValueByVisibleTextInDropdown(ContactUsPage.subjectHeadingDropDown(driver), "Customer service");
         ContactUsPage.emailAddress(driver).sendKeys("bala@test.com");
-        takeScreenshot();
+        takeScreenshot("EmailTest");
     }
 
     @After
