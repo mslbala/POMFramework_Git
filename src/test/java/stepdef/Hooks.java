@@ -35,7 +35,7 @@ public class Hooks {
 
     @After
     public void afterScenario() {
-        System.out.println("After scenario");
+        System.out.println("After scenario-check if git pull is reflected");
         CommonUtil.closeSession();
     }
 }
